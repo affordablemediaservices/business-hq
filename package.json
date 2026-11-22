@@ -1,0 +1,10 @@
+{
+  "name": "business-hq",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Project portal for Pierre & the developer (static site + Supabase)",
+  "scripts": {
+    "dev": "node dev-server.js",
+    "start": "node dev-server.js"
+  }
+}

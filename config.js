@@ -8,7 +8,7 @@
    by the database security rules and the members allow-list.
 ---------------------------------------------------------------- */
 window.PORTAL_CONFIG = {
-  supabaseUrl: '',      // e.g. 'https://abcdefgh.supabase.co'
-  supabaseAnonKey: '',  // publishable key (sb_publishable_...) or legacy anon key
+  supabaseUrl: 'https://lsmipgrqfkehhvewslik.supabase.co',      // e.g. 'https://abcdefgh.supabase.co'
+  supabaseAnonKey: 'sb_publishable_MGJPb9SbBQ1YmtSfJ4ztsQ_HQ0AsTC4',  // publishable key (sb_publishable_...) or legacy anon key
   portalName: 'Business HQ'
 };

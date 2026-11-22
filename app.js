@@ -1514,6 +1514,7 @@ async function startApp() {
   document.addEventListener('visibilitychange', () => { if (!document.hidden && !S.modal) refresh().catch(() => { }); });
 }
 
+const AUTH_LINK = (location.hash.match(/type=(invite|recovery|signup)/) || [])[1] || '';
 async function boot() {
   bindGlobal();
   if (DEMO) {
@@ -1534,7 +1535,8 @@ async function boot() {
   catch (e) { $('#app').innerHTML = `<div class="login"><div class="box"><h1>Can’t connect</h1><p>Couldn’t load the Supabase library. Check your internet connection.</p></div></div>`; return; }
   SupaDB.c.auth.onAuthStateChange((event) => { if (event === 'PASSWORD_RECOVERY') renderLogin('Enter a new password for your account.', 'newpw'); });
   const { data: { session } } = await SupaDB.c.auth.getSession();
-  if (/type=recovery/.test(location.hash)) return;
+  if (AUTH_LINK === 'recovery') { if (session) renderLogin('Enter a new password for your account.', 'newpw'); return; }
+  if (AUTH_LINK === 'invite' && session) return renderLogin('Welcome! Choose a password for your account.', 'newpw');
   if (!session) return renderLogin();
   afterLogin(session);
 }
